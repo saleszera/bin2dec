@@ -1,0 +1,180 @@
+@keyframes enterFadeRight {
+  0%{
+    opacity: 0;    
+    transform: translateX(100px);
+  }
+  100%{   
+    opacity: 1; 
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  overflow: hidden; 
+}
+
+:root {
+  --white: #f8f8f8;
+  --black: #000807;
+  --green200: #31D843;
+  --green500: #0BD023
+}
+
+@media(max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media(max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+@media(max-width: 680px) {
+  .container main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container main img {
+    margin: 56px 0;
+    transform: rotate(90deg);
+  }
+}
+
+body {
+  background-color: var(--black); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+
+  font-family: 'VT323', monospace, 'Roboto', sans-serif;
+}
+
+h1, label {
+  color: var(--green500);
+}
+
+h1 {
+  font-size: 3.55rem;
+  text-align: center;
+  letter-spacing: 8px;
+}
+
+.container {
+  max-width: 720px;
+  width: 100%;
+  background-color: var(--white);
+  padding: 3.11rem 1.33rem;  
+  border-radius: 10px;
+  animation: fade 0.2s ease-in-out;
+}
+
+.container header {
+  margin-bottom: 36px;
+}
+
+.container main {
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container main img {
+  width: 124px;
+  height: 46.39px;
+  
+  transition: transform 0.2s ease-in-out;
+}
+
+.bin2dec-input {
+  max-width: 256px;
+  min-width: 124px;
+  height: 100px;
+  border: 2px dashed var(--green500);   
+  border-radius: 10px;
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+
+  animation: fade 1s ease-in;
+}
+
+.bin2dec-input:first-child {
+  animation: fade 0.8s ease-in;
+}
+
+.bin2dec-input label {
+  font-size: 3.55rem;
+}
+
+.bin2dec-input input {
+  border: none;
+  width: 100%;
+  height: 76px;
+  margin-left: 8px;
+  background: none;
+  font-family: 'VT323', monospace, 'Roboto', sans-serif;
+  font-size: 2.5rem;  
+  color: var(--green200);
+
+  
+}
+
+/* --------------------------------- REMOVE SCROLL ----------------------------- */
+.bin2dec-input input::-webkit-outer-spin-button, .bin2dec-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bin2dec-input input[type=number] {
+  -moz-appearance: textfield;
+}
+/* ----------------------------------------------------------------------------- */
+
+.bin2dec-input input::placeholder {
+  color: var(--green200);
+}
+
+.bin2dec-input input:focus{
+  outline: 0;
+}
+
+.toast {
+  background-color: tomato;
+  padding: 24px;
+  height: 60px;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  animation: enterFadeRight 0.2s ease-in;
+}
+
+.toast p {
+  color: var(--white);
+  font-size: 1.5rem;
+}
