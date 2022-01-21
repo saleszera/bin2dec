@@ -44,7 +44,8 @@ const convertBinaryToDecimal = (e) => {
     }   
   } catch (error) {   
     showToast(error.message)
-    return (binaryInput.value = '')
+    binaryInput.value = ''
+    decimalInput.value = ''
   }
 }
 
