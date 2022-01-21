@@ -30,11 +30,11 @@ const convertBinaryToDecimal = (e) => {
   }
 
   try {    
-    const toDecimal = binary.reduce((acc, curr, index) => {
+    const toDecimal = binary.reverse().reduce((acc, curr, index) => {
       if(curr > 1 || curr < 0){        
         throw new Error('Entre apenas com números binários!')        
       }
-      const number = curr * 2 ** index
+      const number = (2 ** index) * curr 
   
       return acc + number
     }, 0)
