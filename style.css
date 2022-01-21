@@ -97,10 +97,7 @@ h1 {
   justify-content: space-between;
 }
 
-.container main img {
-  width: 124px;
-  height: 46.39px;
-  
+.container main img {  
   transition: transform 0.2s ease-in-out;
 }
 
