@@ -1,3 +1,4 @@
+const [binaryField, decimalField] = document.getElementsByClassName('bin2dec-input')
 const [binaryInput, decimalInput] = document.getElementsByTagName('input')
 const [container] = document.getElementsByClassName('container')
 
@@ -53,7 +54,15 @@ const convertDecimalToBinary = (e) => {
   let number = e.target.value
   let numbers = []
 
+  if(Boolean(binaryInput.value) && !number){
+    const classes = [...binaryField.classList]
 
+    if(classes.includes('bin2dec-input-focus')){
+      binaryField.classList.remove('bin2dec-input-focus')
+    }
+
+    return (binaryInput.value = '')
+  }
 
   do {
     numbers.push(number % 2)
@@ -64,8 +73,28 @@ const convertDecimalToBinary = (e) => {
   binaryInput.value = numbers.reverse().join('')
 }
 
+const binaryFocus = (element) => {  
+  element.classList.add('bin2dec-input-focus')
+}
+
+const removeBinaryFocus = (elementField, elementInput) => {
+  const classes = [...elementField.classList]  
+
+  if(!elementInput.value && classes.includes('bin2dec-input-focus')){
+    elementField.classList.remove('bin2dec-input-focus')
+  }
+}
+
 binaryInput.addEventListener('input', e => convertBinaryToDecimal(e))
+binaryInput.addEventListener('focus', () => binaryFocus(binaryField))
+binaryInput.addEventListener('blur', () => removeBinaryFocus(binaryField, binaryInput))
 decimalInput.addEventListener('input', e => convertDecimalToBinary(e))
+decimalInput.addEventListener('focus', () => binaryFocus(decimalField))
+decimalInput.addEventListener('blur', () => removeBinaryFocus(decimalField, decimalInput))
 
 binaryInput.removeEventListener('input', convertBinaryToDecimal)
+binaryInput.removeEventListener('focus', binaryFocus)
+binaryInput.removeEventListener('blur', removeBinaryFocus)
 decimalInput.removeEventListener('input', convertDecimalToBinary)
+decimalInput.removeEventListener('focus', binaryFocus)
+decimalInput.removeEventListener('blur', removeBinaryFocus)
